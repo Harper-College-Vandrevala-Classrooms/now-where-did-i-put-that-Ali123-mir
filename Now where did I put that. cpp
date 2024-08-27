@@ -1,0 +1,65 @@
+#include <iostream>
+#include <string>
+int find(const std::string& str, char ch) {
+for (int i = 0; i < str.length(); ++i) {
+if (str[i] == ch) {
+return i;
+}
+}
+return -1;
+}
+int find(const std::string& str, const std::string& substr) {
+int n = str.length();
+int m = substr.length();
+if (m > n) return -1;
+for (int i = 0; i <= n - m; ++i) {
+int j = 0;
+while (j < m && str[i + j] == substr[j]) {
+++j;
+}
+if (j == m) {
+return i;
+}
+}
+return -1;
+}
+int main() {
+std::string inputString = "The quick brown fox";
+char searchChar = 'e';
+int charIndex = find(inputString, searchChar);
+std::cout << "Input String: \"" << inputString << "\"" << std::endl;
+std::cout << "Search Query: '" << searchChar << "'" << std::endl;
+std::cout << "Returns: " << charIndex << std::endl;
+std::cout << "Search Query Type: char" << std::endl;
+std::cout << std::endl;
+std::string searchSubstring = "e";
+int substrIndex = find(inputString, searchSubstring);
+std::cout << "Input String: \"" << inputString << "\"" << std::endl;
+
+std::cout << "Search Query: \"" << searchSubstring << "\"" << std::endl;
+std::cout << "Returns: " << substrIndex << std::endl;
+std::cout << "Search Query Type: string" << std::endl;
+std::cout << std::endl;
+searchChar = ' ';
+charIndex = find(inputString, searchChar);
+std::cout << "Input String: \"" << inputString << "\"" << std::endl;
+std::cout << "Search Query: '" << searchChar << "'" << std::endl;
+std::cout << "Returns: " << charIndex << std::endl;
+std::cout << "Search Query Type: char" << std::endl;
+std::cout << std::endl;
+searchSubstring = "quick";
+substrIndex = find(inputString, searchSubstring);
+std::cout << "Input String: \"" << inputString << "\"" << std::endl;
+std::cout << "Search Query: \"" << searchSubstring << "\"" << std::endl;
+std::cout << "Returns: " << substrIndex << std::endl;
+std::cout << "Search Query Type: string" << std::endl;
+std::cout << std::endl;
+searchSubstring = "quiet";
+substrIndex = find(inputString, searchSubstring);
+std::cout << "Input String: \"" << inputString << "\"" << std::endl;
+std::cout << "Search Query: \"" << searchSubstring << "\"" << std::endl;
+std::cout << "Returns: " << substrIndex << std::endl;
+std::cout << "Search Query Type: string" << std::endl;
+std::cout << std::endl;
+return 0;
+}
